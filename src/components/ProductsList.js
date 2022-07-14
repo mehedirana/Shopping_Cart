@@ -1,6 +1,8 @@
 import React from 'react'
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import { MinusIcon } from '../assets/svg/MinusIcon'
+import { PlusIcon } from '../assets/svg/PlusIcon'
 import { rawData } from '../dummy-data/dummyData'
 import { addToCart } from '../store/cart/cartSlice'
 
@@ -13,15 +15,23 @@ const ProductsList = () => {
         dispatch(addToCart(item))
     }
 
-    const ProductCounter = (item) => {
-        const temp =  products?.filter(e => +e.id === +item?.id)
+    const ProductCounter = ({ item }) => {
+        const temp = products?.filter((e) => e.id === item?.id)
 
-        console.log(temp,'------------------>' );
+        console.log(temp, '------------------>', products);
         return (
             <>
                 {
                     temp[0] ?
-                        <Text>jshfsjdjjdsj</Text>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TouchableOpacity>
+                                <PlusIcon color={'#c765cc'} />
+                            </TouchableOpacity>
+                            <Text>{temp[0]?.qty}</Text>
+                            <TouchableOpacity>
+                                <MinusIcon color={'#c765cc'} />
+                            </TouchableOpacity>
+                        </View>
                         : <TouchableOpacity onPress={() => handleAddtoCart(item)}>
                             <Text style={{ color: '#FFFFFF', backgroundColor: '#16a80c', borderRadius: 9, padding: 5, textAlign: 'center', marginTop: 5 }}>add to cart</Text>
                         </TouchableOpacity>
