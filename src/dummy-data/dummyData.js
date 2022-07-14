@@ -1,7 +1,4 @@
 
-
-
-
 export const rawData = [
 
     {
@@ -237,7 +234,7 @@ export const rawData = [
     {
         id: 23,
         name: 'Product Name can be long',
-        image: require('../assets/subList/rice.png'),
+        image: require('../assets/rice_2.png'),
         price: 899,
         discount_price: 699,
         discountRate: 29,
@@ -280,7 +277,7 @@ export const rawData = [
     {
         id: 27,
         name: 'Product Name can be long',
-        image: require('../assets/subList/spices.png'),
+        image: require('../assets/spices_2.png'),
         price: 899,
         discount_price: 699,
         discountRate: 29,
