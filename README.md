@@ -1,7 +1,7 @@
 # Shopping_Cart
 
 
-React Native e-commerce app shopping cart using redux-toolkit and middleware thunk
+React Native e-commerce app shopping cart using redux-toolkit and middleware thunk.(Shopping cart using Redux-Toolkit)
 
 ######
 npm install @reduxjs/toolkit

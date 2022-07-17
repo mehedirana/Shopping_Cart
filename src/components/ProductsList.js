@@ -4,31 +4,32 @@ import { useDispatch, useSelector } from 'react-redux'
 import { MinusIcon } from '../assets/svg/MinusIcon'
 import { PlusIcon } from '../assets/svg/PlusIcon'
 import { rawData } from '../dummy-data/dummyData'
-import { addToCart } from '../store/cart/cartSlice'
+import { addToCart, cartQtyDown, cartQtyUp } from '../store/cart/cartSlice'
 
 const ProductsList = () => {
     const { products } = useSelector((e) => e.cart);
 
     const dispatch = useDispatch();
 
-    const handleAddtoCart = (item) => {
-        dispatch(addToCart(item))
-    }
+    const handleAddtoCart = (item) =>  dispatch(addToCart(item))
+
+    const handleCartUp = (item)=> dispatch(cartQtyUp(item))
+    const handleCartDown = (item)=> dispatch(cartQtyDown(item))
+    
 
     const ProductCounter = ({ item }) => {
         const temp = products?.filter((e) => e.id === item?.id)
 
-        console.log(temp, '------------------>', products);
         return (
             <>
                 {
                     temp[0] ?
                         <View style={{ flexDirection: 'row' }}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => handleCartUp(item)}>
                                 <PlusIcon color={'#c765cc'} />
                             </TouchableOpacity>
                             <Text>{temp[0]?.qty}</Text>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => handleCartDown(item)}>
                                 <MinusIcon color={'#c765cc'} />
                             </TouchableOpacity>
                         </View>
